@@ -1,6 +1,8 @@
 import pygame
 from pygame.color import Color
 from pygame.time import Clock
+from asteroidfield import AsteroidField
+from asteroids import Asteroid
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
 
@@ -17,6 +19,10 @@ def main():
     drawable = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
     plyr = Player(x=SCREEN_WIDTH // 2, y=SCREEN_HEIGHT // 2)
+    asteroids = pygame.sprite.Group()
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable,)
+    asteroid_field = AsteroidField()
 
     while True:
         for event in pygame.event.get():
