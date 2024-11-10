@@ -39,6 +39,11 @@ def main():
             if ast.collision(plyr):
                 print("Game over!")
                 return
+            for shot in shots:
+                if ast.collision(shot):
+                    print("Asteroid destroyed!")
+                    ast.split()
+                    shot.kill()
         for pl in drawable:
             pl.draw(screen)
         pygame.display.flip()
